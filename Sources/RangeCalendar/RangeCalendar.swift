@@ -1,0 +1,6 @@
+public struct RangeCalendar {
+    public private(set) var text = "Hello, World!"
+
+    public init() {
+    }
+}
