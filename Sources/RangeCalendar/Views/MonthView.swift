@@ -54,13 +54,12 @@ public extension MonthView{
     private func cellView(_ column: Date) -> some View{
         HStack(spacing: 0) {
             if self.isThisMonth(date: column) {
-                DayCell(rkDate: RCDate(
+                DayCell(rcDate: RCDate(
                     date: column,
                     manager: manager,
                     isDisabled: !isEnabled(date: column),
                     isToday: isToday(date: column),
-                    isSelected: isSpecialDate(date: column),
-                    isBetweenStartAndEnd: isBetweenStartAndEnd(date: column),
+                    isBetweenStartAndEnd: isBetweenStartAndEnd(date: column), isSelected: isSpecialDate(date: column),
                     endDate: manager.endDate,
                     startDate: manager.startDate),
                     cellWidth: self.cellWidth)

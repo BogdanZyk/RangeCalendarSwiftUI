@@ -21,7 +21,7 @@ public struct WeekdayHeaderView : View {
             ForEach(weekdays, id: \.self) { weekday in
                 Text(weekday)
                     .font(.system(size: 18))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(manager.colors.weekdayHeaderColor)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(manager.colors.weekdayHeaderColor)
             }

@@ -14,8 +14,6 @@ public class RCManager: ObservableObject {
     @Published public var calendar = Calendar.current
     @Published public var minimumDate: Date = Date()
     @Published public var maximumDate: Date = Date()
-    @Published public var disabledDates: [Date] = [Date]()
-    @Published public var selectedDates: [Date] = [Date]()
     @Published public var selectedDate: Date! = nil
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
@@ -23,12 +21,17 @@ public class RCManager: ObservableObject {
     
     public var colors = ColorSettings()
     
-    public init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date]()) {
+    public init(calendar: Calendar,
+                minimumDate: Date,
+                maximumDate: Date,
+                startDate: Date? = nil,
+                endDate: Date? = nil) {
+        
         self.calendar = calendar
         self.minimumDate = minimumDate
         self.maximumDate = maximumDate
-        self.selectedDates = selectedDates
-    }
-    
-    
+        self.startDate = startDate
+        self.endDate = endDate
+        
+    }    
 }

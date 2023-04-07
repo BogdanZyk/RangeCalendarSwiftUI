@@ -21,11 +21,12 @@ public class ColorSettings : ObservableObject {
     // background colors
     @Published public var textBackColor: Color = Color.clear
     @Published public var todayBackColor: Color = Color.gray
-    @Published public var selectedBackColor: Color = Color.red
+    @Published public var selectedBackColor: Color = Color.blue
     @Published public var disabledBackColor: Color = Color.clear
-    @Published public var betweenStartAndEndBackColor: Color = Color.blue
+    @Published public var betweenStartAndEndBackColor: Color = Color(.systemGray3)
+    @Published public var calendarBackColor: Color = Color(.systemGray6)
     // headers foreground colors
-    @Published public var weekdayHeaderColor: Color = Color.primary
+    @Published public var weekdayHeaderColor: Color = .secondary
     @Published public var monthHeaderColor: Color = Color.primary
     // headers background colors
     @Published public var weekdayHeaderBackColor: Color = Color.clear

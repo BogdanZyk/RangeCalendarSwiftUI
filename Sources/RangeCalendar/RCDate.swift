@@ -20,7 +20,15 @@ public struct RCDate {
     public var endDate: Date?
     public var startDate: Date?
     
-    public init(date: Date, manager: RCManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool, endDate: Date? = nil, startDate: Date? = nil) {
+    public init(date: Date,
+                manager: RCManager,
+                isDisabled: Bool,
+                isToday: Bool,
+                isBetweenStartAndEnd: Bool,
+                isSelected: Bool,
+                endDate: Date? = nil,
+                startDate: Date? = nil) {
+        
         self.date = date
         self.endDate = endDate
         self.startDate = startDate
