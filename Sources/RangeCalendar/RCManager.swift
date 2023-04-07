@@ -14,6 +14,7 @@ public class RCManager: ObservableObject {
     @Published public var calendar = Calendar.current
     @Published public var minimumDate: Date = Date()
     @Published public var maximumDate: Date = Date()
+    @Published var disabledDates: [Date] = [Date]()
     @Published public var selectedDate: Date! = nil
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
@@ -25,7 +26,8 @@ public class RCManager: ObservableObject {
                 minimumDate: Date,
                 maximumDate: Date,
                 startDate: Date? = nil,
-                endDate: Date? = nil) {
+                endDate: Date? = nil,
+                disabledDates: [Date] = []) {
         
         self.calendar = calendar
         self.minimumDate = minimumDate
@@ -33,5 +35,14 @@ public class RCManager: ObservableObject {
         self.startDate = startDate
         self.endDate = endDate
         
-    }    
+    }
+    
+    
+    public func disabledDatesContains(date: Date) -> Bool {
+        if let _ = self.disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
+            return true
+        }
+        return false
+    }
+    
 }

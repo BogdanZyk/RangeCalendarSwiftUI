@@ -20,8 +20,9 @@ public struct RangeCalendar: View {
                             MonthView(manager: manager, monthOffset: index)
                                 .id(index)
                         }
-                        .padding()
                     }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical)
                 }
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){

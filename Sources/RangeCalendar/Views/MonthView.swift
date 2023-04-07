@@ -26,8 +26,11 @@ public struct MonthView: View {
     
     
     public var body: some View {
-        VStack(alignment: HorizontalAlignment.center, spacing: 10){
-            Text(getMonthHeader()).foregroundColor(self.manager.colors.monthHeaderColor)
+        VStack(alignment: .leading, spacing: 10){
+            Text(getMonthHeader())
+                .font(.title3.bold())
+                .foregroundColor(self.manager.colors.monthHeaderColor)
+                .padding(.leading)
             VStack(alignment: .leading, spacing: 5) {
                 ForEach(monthsArray, id:  \.self) { row in
                     HStack(spacing: 0){
@@ -36,7 +39,7 @@ public struct MonthView: View {
                         }
                     }
                 }
-            }.frame(minWidth: 0, maxWidth: .infinity)
+            }
         }.background(manager.colors.monthBackColor)
     }
 }
@@ -116,7 +119,7 @@ public extension MonthView{
        headerDateFormatter.calendar = manager.calendar
        headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: manager.calendar.locale)
        
-       return headerDateFormatter.string(from: firstOfMonthForOffset()).uppercased()
+       return headerDateFormatter.string(from: firstOfMonthForOffset())
    }
    
    func getDateAtIndex(index: Int) -> Date {
@@ -216,8 +219,12 @@ public extension MonthView{
        if manager.calendar.compare(clampedDate, to: manager.minimumDate, toGranularity: .day) == .orderedAscending || manager.calendar.compare(clampedDate, to: manager.maximumDate, toGranularity: .day) == .orderedDescending {
            return false
        }
-       return true
+       return !isOneOfDisabledDates(date: date)
    }
+    
+    func isOneOfDisabledDates(date: Date) -> Bool {
+        self.manager.disabledDatesContains(date: date)
+    }
    
    func isStartDateAfterEndDate() -> Bool {
        if manager.startDate == nil {
