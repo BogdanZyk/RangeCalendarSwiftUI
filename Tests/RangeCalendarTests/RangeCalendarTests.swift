@@ -6,6 +6,7 @@ final class RangeCalendarTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(RangeCalendar().text, "Hello, World!")
+        XCTAssertEqual(Helpers.getWeekdayHeaders(calendar: .current), ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"])
+        XCTAssertEqual(Helpers.formatDate(date: Date().addingTimeInterval(60*60*24), calendar: .current), "8")
     }
 }

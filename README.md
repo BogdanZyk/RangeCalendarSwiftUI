@@ -1,3 +1,3 @@
 # RangeCalendar
 
-A description of this package.
+Range date calendar for SwiftUI.
