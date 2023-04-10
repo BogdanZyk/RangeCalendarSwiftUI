@@ -11,7 +11,7 @@ public struct MonthView: View {
 
     @State private var isStartDate: Bool = true
     
-    @ObservedObject var manager: RCManager
+    @ObservedObject public var manager: RCManager
     
     let monthOffset: Int
     

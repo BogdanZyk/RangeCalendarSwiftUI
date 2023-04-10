@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct WeekdayHeaderView : View {
     
-    var manager: RCManager
+    public var manager: RCManager
     
     private var weekdays: [String]{
         Helpers.getWeekdayHeaders(calendar: manager.calendar)

@@ -14,7 +14,7 @@ public class RCManager: ObservableObject {
     @Published public var calendar = Calendar.current
     @Published public var minimumDate: Date = Date()
     @Published public var maximumDate: Date = Date()
-    @Published var disabledDates: [Date] = [Date]()
+    @Published public var disabledDates: [Date] = [Date]()
     @Published public var selectedDate: Date! = nil
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
