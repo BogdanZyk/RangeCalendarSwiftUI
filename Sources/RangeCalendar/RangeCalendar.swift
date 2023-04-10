@@ -9,7 +9,13 @@
 import SwiftUI
 
 public struct RangeCalendar: View {
-    @ObservedObject public var manager: RCManager
+    @ObservedObject var manager: RCManager
+    
+    public init(manager: RCManager){
+        self._manager = ObservedObject(wrappedValue: manager)
+    }
+    
+    
     public var body: some View {
         VStack(spacing: 0) {
             weekDayHeader
