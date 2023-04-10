@@ -10,11 +10,16 @@ import SwiftUI
 
 public struct DayCell: View {
     
-    public var rcDate: RCDate
+    private var rcDate: RCDate
     
-    public var cellWidth: CGFloat
+    private var cellWidth: CGFloat
     
-    public var corners: UIRectCorner{
+    public init(rcDate: RCDate, cellWidth: CGFloat) {
+        self.rcDate = rcDate
+        self.cellWidth = cellWidth
+    }
+    
+    private var corners: UIRectCorner{
         if rcDate.isStartDate {
             return [.topLeft, .bottomLeft]
         }else if rcDate.isEndDate{
@@ -24,11 +29,11 @@ public struct DayCell: View {
         }
     }
     
-    public var radius: CGFloat{
+    private var radius: CGFloat{
         rcDate.isEndDate || rcDate.isStartDate ? cellWidth / 2 : 0
     }
     
-    public  var body: some View {
+    public var body: some View {
         Text(rcDate.getText())
             .fontWeight(rcDate.getFontWeight())
             .foregroundColor(rcDate.getTextColor())
@@ -58,7 +63,7 @@ struct RKCell_Previews : PreviewProvider {
         }
         .frame(width: 34, height: 34)
         .previewLayout(.fixed(width: 34, height: 70))
-            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

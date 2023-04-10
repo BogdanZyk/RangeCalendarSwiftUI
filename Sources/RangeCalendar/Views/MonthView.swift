@@ -11,18 +11,24 @@ public struct MonthView: View {
 
     @State private var isStartDate: Bool = true
     
-    @ObservedObject public var manager: RCManager
+    @ObservedObject private var manager: RCManager
     
-    let monthOffset: Int
     
-    let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
-    let daysPerWeek = 7
-    var monthsArray: [[Date]] {
+    public init(manager: RCManager, monthOffset: Int){
+        self.monthOffset = monthOffset
+        self._manager = ObservedObject(wrappedValue: manager)
+    }
+    
+    private let monthOffset: Int
+    
+    private let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
+    private let daysPerWeek = 7
+    private var monthsArray: [[Date]] {
         monthArray()
     }
-    let cellWidth = CGFloat(32)
+    private let cellWidth = CGFloat(32)
     
-    @State var showTime = false
+    @State private var showTime = false
     
     
     public var body: some View {

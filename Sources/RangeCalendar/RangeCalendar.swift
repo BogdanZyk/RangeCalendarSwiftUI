@@ -15,7 +15,6 @@ public struct RangeCalendar: View {
         self._manager = ObservedObject(wrappedValue: manager)
     }
     
-    
     public var body: some View {
         VStack(spacing: 0) {
             weekDayHeader

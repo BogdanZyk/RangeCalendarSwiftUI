@@ -10,15 +10,15 @@ import SwiftUI
 
 public struct RCDate {
     
-    public var date: Date
-    public let manager: RCManager
+    private var date: Date
+    private let manager: RCManager
     
-    public var isDisabled: Bool = false
-    public var isToday: Bool = false
-    public var isSelected: Bool = false
-    public var isBetweenStartAndEnd: Bool = false
-    public var endDate: Date?
-    public var startDate: Date?
+    private var isDisabled: Bool = false
+    private var isToday: Bool = false
+    private var isSelected: Bool = false
+    private var isBetweenStartAndEnd: Bool = false
+    private var endDate: Date?
+    private var startDate: Date?
     
     public init(date: Date,
                 manager: RCManager,
