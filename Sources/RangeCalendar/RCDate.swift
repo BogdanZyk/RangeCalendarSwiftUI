@@ -43,7 +43,7 @@ public struct RCDate {
         date == endDate
     }
     
-    public var isStartDate: Bool{
+    var isStartDate: Bool{
         date == startDate
     }
     

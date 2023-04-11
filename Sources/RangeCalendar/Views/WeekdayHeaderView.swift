@@ -15,6 +15,10 @@ public struct WeekdayHeaderView : View {
     private var weekdays: [String]{
         Helpers.getWeekdayHeaders(calendar: manager.calendar)
     }
+    
+    public init(manager: RCManager){
+        self.manager = manager
+    }
      
     public var body: some View {
         HStack(alignment: .center) {
