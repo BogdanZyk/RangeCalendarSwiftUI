@@ -150,7 +150,7 @@ public extension MonthView{
        var offset = DateComponents()
        offset.month = monthOffset
        
-       return manager.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
+       return manager.calendar.date(byAdding: offset, to: firstDateMonth())!
    }
    
    func formatDate(date: Date) -> Date {
@@ -165,7 +165,7 @@ public extension MonthView{
        return refDate == clampedDate
    }
    
-   func RKFirstDateMonth() -> Date {
+   func firstDateMonth() -> Date {
        var components = manager.calendar.dateComponents(calendarUnitYMD, from: manager.minimumDate)
        components.day = 1
        

@@ -25,7 +25,7 @@ final class Helpers{
         return weekdaySymbols ?? []
     }
     
-
+    
     static func formatDate(date: Date, calendar: Calendar) -> String {
         let formatter = dateFormatter()
         return stringFrom(date: date, formatter: formatter, calendar: calendar)
@@ -44,4 +44,24 @@ final class Helpers{
         }
         return formatter.string(from: date)
     }
+    
+    static func getMonthDayFromDate(date: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.month], from: date)
+        return components.month! - 1
+    }
+    
+    
+    static func numberOfMonths(_ calendar: Calendar, minDate: Date, maxDate: Date) -> Int {
+        calendar.dateComponents([.month], from: minDate, to: maximumDateMonthLastDay(calendar, from: maxDate)).month! + 1
+    }
+    
+    static func maximumDateMonthLastDay(_ calendar: Calendar, from date: Date) -> Date {
+        var components = calendar.dateComponents([.year, .month, .day], from: date)
+        components.month! += 1
+        components.day = 0
+        return calendar.date(from: components)!
+    }
+    
 }
+

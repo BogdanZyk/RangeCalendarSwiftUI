@@ -15,13 +15,17 @@ public struct RangeCalendar: View {
         self._manager = ObservedObject(wrappedValue: manager)
     }
     
+    private var numberOfMonths: Int{
+        Helpers.numberOfMonths(manager.calendar, minDate: manager.minimumDate, maxDate: manager.maximumDate)
+    }
+    
     public var body: some View {
         VStack(spacing: 0) {
             weekDayHeader
             ScrollViewReader { proxy in
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 32) {
-                        ForEach(0..<numberOfMonths(), id: \.self) { index in
+                        ForEach(0..<numberOfMonths, id: \.self) { index in
                             MonthView(manager: manager, monthOffset: index)
                                 .id(index)
                         }
@@ -32,7 +36,7 @@ public struct RangeCalendar: View {
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                         if let date = manager.startDate{
-                            proxy.scrollTo(getMonthFromDate(date: date), anchor: .center)
+                            proxy.scrollTo(Helpers.getMonthDayFromDate(date: date), anchor: .center)
                         }
                     }
                 }
@@ -40,25 +44,6 @@ public struct RangeCalendar: View {
         }
         .background(manager.colors.calendarBackColor.ignoresSafeArea())
     }
-    
-    func numberOfMonths() -> Int {
-        return manager.calendar.dateComponents([.month], from: manager.minimumDate, to: RKMaximumDateMonthLastDay()).month! + 1
-    }
-    
-    func RKMaximumDateMonthLastDay() -> Date {
-        var components = manager.calendar.dateComponents([.year, .month, .day], from: manager.maximumDate)
-        components.month! += 1
-        components.day = 0
-        
-        return manager.calendar.date(from: components)!
-    }
-    
-    func getMonthFromDate(date: Date) -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.month], from: date)
-        return components.month! - 1
-    }
-
 }
 
 #if DEBUG
