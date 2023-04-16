@@ -6,6 +6,7 @@
 - Color customization
 - Minimum and maximum dates selectable
 - Light and dark mode
+- Localization
 
 ## 📷 Screenshots 
 
