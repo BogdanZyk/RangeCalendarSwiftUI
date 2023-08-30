@@ -62,9 +62,10 @@ struct RangeCalendar_Previews : PreviewProvider {
 public extension RangeCalendar{
     
     private var weekDayHeader: some View{
-        VStack(spacing: 10) {
+        VStack(spacing: 8) {
             WeekdayHeaderView(manager: manager)
                 .padding(.horizontal)
+                .padding(.top, 8)
             Divider()
         }
     }
