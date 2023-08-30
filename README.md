@@ -49,7 +49,7 @@ struct ContentView: View {
 
 ```
 
-If you need to adjust the colors:
+If you need to adjust the colors and fonts:
 
 ```swift
  RangeCalendar(manager: manager)
@@ -58,6 +58,8 @@ If you need to adjust the colors:
                 manager.colors.weekdayHeaderColor = .secondary
                 manager.colors.todayColor = .yellow
                 manager.colors.betweenStartAndEndBackColor = .green
+                manager.fonts.weekdayHeaderFont = .body.weight(.light)
+                manager.fonts.cellSelectedFont = .body.bold()
             }
 
 
