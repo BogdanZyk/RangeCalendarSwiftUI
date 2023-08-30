@@ -80,18 +80,17 @@ public struct RCDate {
         return backgroundColor
     }
     
-    public func getFontWeight() -> Font.Weight {
-        var fontWeight = Font.Weight.medium
+    public var font: Font {
+        var fontWeight = manager.font.cellUnselectedFont
         if isDisabled {
-            fontWeight = Font.Weight.thin
+            fontWeight = manager.font.cellIsDisabledFont
         } else if isSelected {
-            fontWeight = Font.Weight.heavy
+            fontWeight = manager.font.cellSelectedFont
         } else if isToday {
-            fontWeight = Font.Weight.heavy
+            fontWeight = manager.font.cellIsTodayFont
         } else if isBetweenStartAndEnd {
-            fontWeight = Font.Weight.heavy
+            fontWeight = manager.font.cellIsBetweenStartAndEndFont
         }
         return fontWeight
     }
-    
 }

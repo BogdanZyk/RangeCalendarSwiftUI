@@ -35,7 +35,7 @@ public struct DayCell: View {
     
     public var body: some View {
         Text(rcDate.getText())
-            .fontWeight(rcDate.getFontWeight())
+            .font(rcDate.font)
             .foregroundColor(rcDate.getTextColor())
             .frame(height: cellWidth)
             .frame(maxWidth: .infinity, alignment: .center)

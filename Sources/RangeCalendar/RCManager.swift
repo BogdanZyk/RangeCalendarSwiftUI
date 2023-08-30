@@ -21,6 +21,7 @@ public class RCManager: ObservableObject {
     
     
     public var colors = ColorSettings()
+    public var font = FontSettings()
     
     public init(calendar: Calendar,
                 minimumDate: Date,

@@ -34,7 +34,7 @@ public struct MonthView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 10){
             Text(getMonthHeader())
-                .font(.title3.bold())
+                .font(manager.font.monthHeaderFont)
                 .foregroundColor(self.manager.colors.monthHeaderColor)
                 .padding(.leading)
             VStack(alignment: .leading, spacing: 5) {

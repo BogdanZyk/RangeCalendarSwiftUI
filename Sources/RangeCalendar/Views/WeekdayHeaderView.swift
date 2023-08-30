@@ -24,7 +24,7 @@ public struct WeekdayHeaderView : View {
         HStack(alignment: .center) {
             ForEach(weekdays, id: \.self) { weekday in
                 Text(weekday)
-                    .font(.system(size: 18))
+                    .font(manager.font.weekdayHeaderFont)
                     .foregroundColor(manager.colors.weekdayHeaderColor)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(manager.colors.weekdayHeaderColor)
