@@ -49,9 +49,9 @@ public struct RangeCalendar: View {
 struct RangeCalendar_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RangeCalendar(manager: RCManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)))
-            RangeCalendar(manager: RCManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)))
-                .environment(\.colorScheme, .dark)
+            RangeCalendar(manager: RCManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*30), maximumDate: Date().addingTimeInterval(60*60*24*365), disabledAfterDate: Date()))
+//            RangeCalendar(manager: RCManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)))
+//                .environment(\.colorScheme, .dark)
         }
     }
 }
