@@ -27,7 +27,6 @@ public struct RangeCalendar: View {
                     LazyVStack(spacing: 32) {
                         ForEach(0..<numberOfMonths, id: \.self) { index in
                             MonthView(manager: manager, monthOffset: index)
-                                .id(index)
                         }
                     }
                     .padding(.horizontal, 10)
@@ -36,7 +35,7 @@ public struct RangeCalendar: View {
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                         if let date = manager.startDate{
-                            proxy.scrollTo(Helpers.getMonthDayFromDate(date: date), anchor: .center)
+                            proxy.scrollTo(Helpers.getMonthHeader(for: date, calendar: manager.calendar), anchor: .center)
                         }
                     }
                 }

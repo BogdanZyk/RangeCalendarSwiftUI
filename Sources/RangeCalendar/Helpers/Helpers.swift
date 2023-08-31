@@ -51,6 +51,13 @@ final class Helpers{
         return components.month! - 1
     }
     
+    static func getMonthHeader(for date: Date, calendar: Calendar) -> String {
+       let dateFormatter = DateFormatter()
+        dateFormatter.calendar = calendar
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: calendar.locale)
+       
+       return dateFormatter.string(from: date)
+   }
     
     static func numberOfMonths(_ calendar: Calendar, minDate: Date, maxDate: Date) -> Int {
         calendar.dateComponents([.month], from: minDate, to: maximumDateMonthLastDay(calendar, from: maxDate)).month! + 1

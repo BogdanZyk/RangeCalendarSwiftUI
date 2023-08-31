@@ -32,21 +32,26 @@ public struct MonthView: View {
     
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: 10){
-            Text(getMonthHeader())
-                .font(manager.font.monthHeaderFont)
-                .foregroundColor(self.manager.colors.monthHeaderColor)
-                .padding(.leading)
-            VStack(alignment: .leading, spacing: 5) {
-                ForEach(monthsArray, id:  \.self) { row in
-                    HStack(spacing: 0){
-                        ForEach(row, id:  \.self) { column in
-                            cellView(column)
+        Group {
+            let header = getMonthHeader()
+            VStack(alignment: .leading, spacing: 10){
+                Text(getMonthHeader())
+                    .font(manager.font.monthHeaderFont)
+                    .foregroundColor(self.manager.colors.monthHeaderColor)
+                    .padding(.leading)
+                VStack(alignment: .leading, spacing: 5) {
+                    ForEach(monthsArray, id:  \.self) { row in
+                        HStack(spacing: 0){
+                            ForEach(row, id:  \.self) { column in
+                                cellView(column)
+                            }
                         }
                     }
                 }
             }
-        }.background(manager.colors.monthBackColor)
+            .background(manager.colors.monthBackColor)
+            .id(header)
+        }
     }
 }
 
@@ -121,11 +126,7 @@ public extension MonthView{
    }
    
    func getMonthHeader() -> String {
-       let headerDateFormatter = DateFormatter()
-       headerDateFormatter.calendar = manager.calendar
-       headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: manager.calendar.locale)
-       
-       return headerDateFormatter.string(from: firstOfMonthForOffset())
+       Helpers.getMonthHeader(for: firstOfMonthForOffset(), calendar: manager.calendar)
    }
    
    func getDateAtIndex(index: Int) -> Date {
